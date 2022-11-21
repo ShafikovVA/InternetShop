@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.ttf");
+  }
 body{
     margin: 0;
     padding: 0;
@@ -260,9 +263,15 @@ section .catalog{
 
 /* goods end */
 
-/* slider cards */
+/* new goods  */
+.new-goods .slick-slide img{
+    margin-left: 10px;
+}
+/* new goods end */
 
 /* slider cards */
+
+/* slider cards end*/
 
 /* about */
 .about .item-header{
@@ -404,8 +413,9 @@ top: -30px;
     height:100%;
 }
 .item .carousel-inner img{
-    width: 500px;
-    height: auto;
+    height: 400px;
+    width: unset;
+    max-width: 500px;
 }
 .item .carousel-item{
     transition: transform .7s cubic-bezier(0.18, 0.89, 0.32, 1.28);
@@ -480,6 +490,20 @@ top: -30px;
 .message-wrapper img{
     border-radius: 30px;
     object-fit: cover;
+}
+.item .slick-list{
+    width: 100px;
+}
+
+.slick-vertical .slick-slide{
+    display: block;
+    height: 50pt !important;
+    width: 100%;
+    position: relative;
+}
+.slick-vertical .slick-slide img{
+    height: 100%;
+    width: auto;
 }
 /* items end */
 
@@ -631,6 +655,12 @@ top: -30px;
         width: 100%;
         z-index: 1049;
     }
+    .foundation ul{
+        align-items: center;
+    }
+    .foundation ul li{
+        margin-top: 15px;
+    }
     .modal{
         top: 180px;
    }
@@ -750,6 +780,14 @@ top: -30px;
     .about .item .list{
         width: 100%;
     }
+    .item .slick-list{
+        width: 40px;
+    }
+    .item .carousel-inner img {
+        height: 150px;
+        width: inherit;
+        max-width: 200px;
+    }
 }
 @media (min-width: 321px) and (max-width: 375px){
     header{
@@ -757,6 +795,12 @@ top: -30px;
         top: 0;
         width: 100%;
         z-index: 1049;
+    }
+    .foundation ul{
+        align-items: center;
+    }
+    .foundation ul li{
+        margin-top: 15px;
     }
     .modal{
         top: 200px;
@@ -867,6 +911,14 @@ top: -30px;
     .about .item .list{
         width: 100%;
     }
+    .item .slick-list{
+        width: 50px;
+    }
+    .item .carousel-inner img {
+        height: 200px;
+        width: inherit;
+        max-width: 300px;
+    }
 }
 @media (min-width: 376px) and (max-width: 425px){
     header{
@@ -874,6 +926,12 @@ top: -30px;
         top: 0;
         width: 100%;
         z-index: 1049;
+    }
+    .foundation ul{
+        align-items: center;
+    }
+    .foundation ul li{
+        margin-top: 15px;
     }
     .modal{
         top: 200px;
@@ -984,6 +1042,14 @@ top: -30px;
     .about .item .list{
         width: 100%;
     }
+    .item .slick-list{
+        width: 50px;
+    }
+    .item .carousel-inner img {
+        height: 250px;
+        width: inherit;
+        max-width: 300px;
+    }
 }
 
 @media (min-width: 426px) and (max-width: 1023px){
@@ -1049,6 +1115,14 @@ top: -30px;
         max-height: 120px;
         height: auto;
     }
+    .item .slick-list{
+        width: 50px;
+    }
+    .item .carousel-inner img {
+        height: 200px;
+        width: unset;
+        max-width: 300px;
+    }
 }
 @media (min-width: 1024px) and (max-width: 1399px){
     .wrapper{
@@ -1059,6 +1133,14 @@ top: -30px;
     }
     .img_contact{
         height: 9rem;
+    }
+    .item .slick-list{
+        width: 70px;
+    }
+    .item .carousel-inner img {
+        height: 300px;
+        width: unset;
+        max-width: 450px;
     }
 }
 /* media end */

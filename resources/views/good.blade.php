@@ -3,11 +3,12 @@
 @section('title', 'товар')
 
 @section('content')
-<section class="item pt-5">
+<!-- -->
+<section class="goods-reviwer item pt-5">
     <div class="container">
         <div class="row item-header">
             <div class="col-12 col-md-6 order-sm-first order-last">
-                <div id="carouselExampleCaptions" class="carousel vert slide pointer-event" data-bs-ride="carousel">
+                <div id="carouselExampleCaptions" class="carousel vert slide pointer-event" data-bs-ride="carousel" data-bs-interval="false">
                     <div class="d-flex">
                         <div class="slider carousel-indicators">
                             @php
@@ -15,7 +16,7 @@
                             @endphp
                             
                             @foreach ($images as $image)
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$p}}" class="@if($p==0)active @endif" aria-label="Slide {{$p}}"><img src="{{asset('public/storage/'.$image->path)}}" class="d-block w-100" alt="..."></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$p}}" class="@if($p==0)active @endif" aria-label="Slide {{$p}}"><img src="{{asset('public/storage/'.$image->path)}}" class="d-block " alt="..."></button>
                                 @php
                                     $p++;
                                 @endphp
@@ -30,7 +31,7 @@
                             <div class="carousel-item @if ($p == 0)
                             active
                             @endif">
-                                <img src="{{asset('public/storage/'.$image->path)}}" class="productImage d-block w-100" alt="...">
+                                <img src="{{asset('public/storage/'.$image->path)}}" class="productImage d-block" alt="...">
                             </div>
                             @php
                                 $p++;
@@ -78,42 +79,46 @@
                 @endforeach
             </div>
             <div class="row description ">
+                <div class="col-12">
                 @php echo $data->description @endphp
             </div>
+            </div>
             <div class="row reviews ">
-                @auth
-                <form method="POST" action="{{Route('addReview', [$category->slug, $subcategory->slug, $data->slug] )}}" class="row mb-5 justify-content-end">
-                    @csrf
-                    <input type="text" class="d-none" name="product_id" placeholder="" value="{{$data->id}}">
-                    <input type="textarea" name="review" placeholder="Оставьте свой отзыв"class="form-control mb-3" aria-label="With textarea"></textarea>
-                    <button type="submit" class="button btn btn-primary" style="width: 300px">Отправить</button>
-                </form>
-                    
-                @else
-                    <div class="row mb-5 justify-content-end">
-                        <button class="button btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#auth" style="">Войдите чтобы написать комментарий</button>
-                    </div>
-                @endif
-                <div class="row review">
-                    @foreach ($reviews as $review)
-                    <div class="message-wrapper">
-                        @if ((App\Models\User::where('id',$review->user_id)->first())->image != '')
-                        <img src="{{asset('public/storage/'. (App\Models\User::where('id',$review->user_id)->first())->image)}}" width=70px height=70px alt="">
-                        @else
-                        <img src="{{asset('public/storage/uploads/qwtC1I69LwVbqu33LdzF51P5AkG6eFyc4AdCpnTi.png')}}" width=70px height=70px alt="">
-                        @endif
+                <div class="col-12">
+                    @auth
+                    <form method="POST" action="{{Route('addReview', [$category->slug, $subcategory->slug, $data->slug] )}}" class="row mb-5 justify-content-end">
+                        @csrf
+                        <input type="text" class="d-none" name="product_id" placeholder="" value="{{$data->id}}">
+                        <input type="textarea" name="review" placeholder="Оставьте свой отзыв"class="form-control mb-3" aria-label="With textarea"></textarea>
+                        <button type="submit" class="button btn btn-primary" style="width: 300px">Отправить</button>
+                    </form>
                         
-                        <div class="d-flex flex-column">
-                        
-                            <div class="d-flex flex-row adaptive-date-row">
-                                <p style="margin-right: 50px; font-weight: 600">{{(App\Models\User::where('id',$review->user_id)->first())->first_name}}</p>
-                                <p>{{$review->created_at}}</p>
-                            </div>
-                            <p>{{$review->review}}</p>
+                    @else
+                        <div class="row mb-5 justify-content-end">
+                            <button class="button btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#auth" style="">Войдите чтобы написать комментарий</button>
                         </div>
+                    @endif
+                    <div class="row review">
+                        @foreach ($reviews as $review)
+                        <div class="message-wrapper">
+                            @if ((App\Models\User::where('id',$review->user_id)->first())->image != '')
+                            <img src="{{asset('public/storage/'. (App\Models\User::where('id',$review->user_id)->first())->image)}}" width=70px height=70px alt="">
+                            @else
+                            <img src="{{asset('public/storage/uploads/qwtC1I69LwVbqu33LdzF51P5AkG6eFyc4AdCpnTi.png')}}" width=70px height=70px alt="">
+                            @endif
+                            
+                            <div class="d-flex flex-column">
+                            
+                                <div class="d-flex flex-row adaptive-date-row">
+                                    <p style="margin-right: 50px; font-weight: 600">{{(App\Models\User::where('id',$review->user_id)->first())->first_name}}</p>
+                                    <p>{{$review->created_at}}</p>
+                                </div>
+                                <p>{{$review->review}}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                        
                     </div>
-                    @endforeach
-                    
                 </div>
             </div>
          </div>
@@ -126,8 +131,8 @@
         $(".slider").slick({
         arrows: true,
         infinite: false,
-        slidesToShow: 8,
-        slidesToScroll: 7,
+        slidesToShow: 6,
+        slidesToScroll: 5,
         vertical: true,
         verticalSwiping: true,
         adaptiveHeight: true,
@@ -164,7 +169,8 @@
                 }
             }
         ]
-        })   
+        }) 
+          
        
     })
 </script>

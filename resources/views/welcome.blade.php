@@ -5,7 +5,7 @@
 @section('content')
    
     {{Session::get('message')}}
-    <section class="flugmans py-5">
+    <section class="new-goods py-5">
         <div class="container">
             <h4 class="mb-4">Популярные флагманы:</h4>
            <div class="slider">
@@ -13,7 +13,7 @@
              <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4 d-flex align-items-start" style="padding: 1rem 0">
-                    <img src="{{asset('public/storage/'. $flagman->img)}}" class="img-fluid rounded-center" alt="...">
+                    <img src="{{asset('public/storage/'. $flagman->img)}}" class="img-fluid rounded-center col-11" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -42,8 +42,8 @@
                 @foreach ($newGoods as $newGood)
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-start" style="padding: 1rem 0">
-                        <img src="{{asset('public/storage/'.$newGood->img)}}" class="img-fluid rounded-center" alt="...">
+                    <div class="col-md-4 row d-flex align-items-start" style="padding: 1rem 0">
+                        <img src="{{asset('public/storage/'.$newGood->img)}}" class="img-fluid rounded-center col-11" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

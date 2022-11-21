@@ -9,7 +9,7 @@
             
         <div class="row mt-5">
             <div class="first col-12 col-md-5 d-flex flex-column">
-                <img class="img_contact" src="{{ asset('public/storage/system/autor/photo_2021-10-16_22-12-03.jpg') }}" alt="">
+                <img class="img_contact" src="{{ asset('public/storage/system/autor/P5Fpyc8W7rE.jpg') }}" alt="">
                 <input type="file" id="image" name="image" wrapper="false" accept="image/jpeg,image/png,image/gif" class="d-flex justify-content-center p-3 border d-none" style="width: 250px">
             </div>
            

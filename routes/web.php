@@ -23,6 +23,10 @@ Route::get('/auth', function () {
 Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 })->name('shoppingcart');
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin_panel', [\App\Http\Controllers\CreateNewItemController::class, 'index'])->name('admin_panel');
+});
+
 
 
 
@@ -49,13 +53,13 @@ Route::get('brands/{BrandName}', [\App\Http\Controllers\BrandController::class, 
 
 /* личный кабинет */
 Route::post('/registration', [\App\Http\Controllers\UserController::class, 'registration'])
-->name('reg');
+    ->name('reg');
 Route::post('/auth', [\App\Http\Controllers\UserController::class, 'auth'])
-->name('auth');
+    ->name('auth');
 Route::get('/logout', [\App\Http\Controllers\UserController::class, 'logout'])
-->name('logout');
+    ->name('logout');
 Route::post('/lc', [\App\Http\Controllers\UserController::class, 'edit'])
-->name('editPerson');
+    ->name('editPerson');
 /* личный кабилнет конец */
 
 
